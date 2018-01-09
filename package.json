@@ -1,0 +1,30 @@
+{
+  "name": "wdf-experimental",
+  "version": "0.0.1",
+  "description": "WDF Site.",
+  "license": "UNLICENSED",
+  "repository": "https://github.com/wirelineio/wdf-experimental",
+  "private": true,
+  "workspaces": [
+    "sub/*"
+  ],
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.1.1",
+    "eslint": "^4.14.0",
+    "eslint-plugin-react": "^7.4.0",
+    "jest": "^22.0.4"
+  },
+  "jest": {
+    "verbose": false,
+    "cacheDirectory": "/tmp/jest",
+    "transformIgnorePatterns": [
+      "/node_modules/(?!@wirelineio)"
+    ]
+  },
+  "scripts": {
+    "test": "jest --no-cache --silent",
+    "test-ci": "jest --no-cache --config jest-ci.config.json",
+    "upgrade": "yarn upgrade-interactive --latest"
+  }
+}

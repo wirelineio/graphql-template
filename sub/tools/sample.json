@@ -1,0 +1,289 @@
+yarn run v1.3.2
+$ babel-node ./grab_oc.js
+[
+  {
+    "id": 32,
+    "createdAt": "2016-02-10T00:00:00.000Z",
+    "name": "Consciousness Hacking SF",
+    "slug": "chsf",
+    "image": "https://cldup.com/QQIUr-FjY4.svg",
+    "backgroundImage": "http://cl.ly/1q0v2I0x3O2a/imageedit_3_5085454016.jpg",
+    "publicUrl": "https://opencollective.com/chsf",
+    "mission": "We are on a mission to explore and develop new technologies for psychological, emotional and spiritual flourishing.",
+    "settings": null,
+    "currency": "USD",
+    "yearlyIncome": 1648089,
+    "backersAndSponsorsCount": 364,
+    "membersCount": 4,
+    "sponsorsCount": 0,
+    "backersCount": 364,
+    "githubContributorsCount": 0,
+    "contributorsCount": 368
+  },
+  {
+    "id": 580,
+    "createdAt": "2017-04-01T14:02:10.199Z",
+    "name": "Babel",
+    "slug": "babel",
+    "image": "https://opencollective-production.s3-us-west-1.amazonaws.com/8ef2d0e0-16e1-11e7-9b5a-89d03aeb3ad4.png",
+    "backgroundImage": "https://cl.ly/3A1a2M0F430p/babel-compressed.jpg",
+    "publicUrl": "https://opencollective.com/babel",
+    "mission": "Our mission is to allow devs to write the next generation of JavaScript, irrespective of environment",
+    "settings": {
+      "githubRepo": "babel/babel"
+    },
+    "currency": "USD",
+    "yearlyIncome": 5810959,
+    "backersAndSponsorsCount": 225,
+    "membersCount": 6,
+    "sponsorsCount": 18,
+    "backersCount": 207,
+    "githubContributorsCount": 444,
+    "contributorsCount": 675
+  },
+  {
+    "id": 329,
+    "createdAt": "2016-10-23T00:31:11.845Z",
+    "name": "Qubes OS",
+    "slug": "qubes-os",
+    "image": "https://res.cloudinary.com/opencollective/image/upload/v1477178837/qubes-logo-home_uoelw1.svg",
+    "backgroundImage": null,
+    "publicUrl": "https://opencollective.com/qubes-os",
+    "mission": "We are on a mission to create a reasonably secure operating system",
+    "settings": {},
+    "currency": "USD",
+    "yearlyIncome": 1748909,
+    "backersAndSponsorsCount": 179,
+    "membersCount": 11,
+    "sponsorsCount": 0,
+    "backersCount": 179,
+    "githubContributorsCount": 0,
+    "contributorsCount": 190
+  },
+  {
+    "id": 197,
+    "createdAt": "2016-08-09T00:00:00.000Z",
+    "name": "Guadalajara JS",
+    "slug": "gdljs",
+    "image": "https://photos3.meetupstatic.com/photos/event/9/a/2/highres_452942466.jpeg",
+    "backgroundImage": null,
+    "publicUrl": "https://opencollective.com/gdljs",
+    "mission": "We are on a mission to es hacer que el último martes de cada mes sea el mejor martes de cada mes.",
+    "settings": {
+      "lang": "es"
+    },
+    "currency": "MXN",
+    "yearlyIncome": 1105404,
+    "backersAndSponsorsCount": 16,
+    "membersCount": 3,
+    "sponsorsCount": 1,
+    "backersCount": 15,
+    "githubContributorsCount": 0,
+    "contributorsCount": 19
+  },
+  {
+    "id": 2,
+    "createdAt": "2015-12-13T00:14:54.028Z",
+    "name": "WWCode Austin",
+    "slug": "wwcodeaustin",
+    "image": "https://cldup.com/mX6wUEonFH.png",
+    "backgroundImage": null,
+    "publicUrl": "https://opencollective.com/wwcodeaustin",
+    "mission": "We are on a mission to inspire women to excel in tech careers.",
+    "settings": {
+      "lang": "wwcode",
+      "matchingFund": "b571d428"
+    },
+    "currency": "USD",
+    "yearlyIncome": 999111,
+    "backersAndSponsorsCount": 30,
+    "membersCount": 1,
+    "sponsorsCount": 0,
+    "backersCount": 30,
+    "githubContributorsCount": 0,
+    "contributorsCount": 31
+  },
+  {
+    "id": 58,
+    "createdAt": "2016-03-18T00:00:00.000Z",
+    "name": "MochaJS",
+    "slug": "mochajs",
+    "image": "https://opencollective-production.s3-us-west-1.amazonaws.com/mochalogokk2xpng_80237b00-0481-11e6-842c-13d7bfe512ec.png",
+    "backgroundImage": "http://cl.ly/3x3G2P343p3l/mocha-background-image.png",
+    "publicUrl": "https://opencollective.com/mochajs",
+    "mission": "We are on a mission to make asynchronous testing simple and fun.",
+    "settings": {
+      "githubOrg": "mochajs"
+    },
+    "currency": "USD",
+    "yearlyIncome": 1312645,
+    "backersAndSponsorsCount": 71,
+    "membersCount": 4,
+    "sponsorsCount": 4,
+    "backersCount": 67,
+    "githubContributorsCount": 356,
+    "contributorsCount": 431
+  },
+  {
+    "id": 83,
+    "createdAt": "2016-04-28T00:00:00.000Z",
+    "name": "Open Source Collective",
+    "slug": "opensource",
+    "image": "https://res.cloudinary.com/opencollective/image/upload/v1479171624/OSC_fwut73.png",
+    "backgroundImage": null,
+    "publicUrl": "https://opencollective.com/opensource",
+    "mission": "We are on a mission to bring sustainable funding to open source.",
+    "settings": {
+      "HostId": 772,
+      "superCollectiveTag": "open source",
+      "twitter": {
+        "thankDonationEnabled": true,
+        "thankDonation": "Hi $backer thank you for supporting the Open Source Collective! https://opencollective.com/opensource",
+        "monthlyThankDonationsEnabled": true,
+        "monthlyThankDonationsSingular": "Thank you $backer for your continued support of our collective! https://opencollective.com/opensource",
+        "monthlyThankDonationsPlural": "Thanks to our $backerCount backers and sponsors $backerList for supporting our collective! https://opencollective.com/opensource"
+      }
+    },
+    "currency": "USD",
+    "yearlyIncome": 1512626,
+    "backersAndSponsorsCount": 47,
+    "membersCount": 1,
+    "sponsorsCount": 3,
+    "backersCount": 44,
+    "githubContributorsCount": 0,
+    "contributorsCount": 48
+  },
+  {
+    "id": 767,
+    "createdAt": "2017-07-10T06:11:49.655Z",
+    "name": "The e-NABLE Fund",
+    "slug": "enablefund",
+    "image": "https://opencollective-production.s3-us-west-1.amazonaws.com/346cb530-c37c-11e7-b0f3-19f72e1a39f9.jpg",
+    "backgroundImage": null,
+    "publicUrl": "https://opencollective.com/enablefund",
+    "mission": "Empowering a new generation of changemakers creating  free, 3D-printed prosthetics.",
+    "settings": {
+      "HostId": 6024,
+      "superCollectiveTag": "renable"
+    },
+    "currency": "USD",
+    "yearlyIncome": 1382493,
+    "backersAndSponsorsCount": 3,
+    "membersCount": 2,
+    "sponsorsCount": 2,
+    "backersCount": 1,
+    "githubContributorsCount": 0,
+    "contributorsCount": 5
+  },
+  {
+    "id": 10121,
+    "createdAt": "2017-11-08T17:58:48.898Z",
+    "name": "Rochester e-NABLE Lab",
+    "slug": "renablelab",
+    "image": "https://opencollective-production.s3-us-west-1.amazonaws.com/d59ab280-df5c-11e7-b344-2d8bde69c96d.jpg",
+    "backgroundImage": "https://opencollective-production.s3-us-west-1.amazonaws.com/a16f2310-df5c-11e7-b344-2d8bde69c96d.jpg",
+    "publicUrl": "https://opencollective.com/renablelab",
+    "mission": "Creating and supporting high tech high touch changemakers in Rochester NY.",
+    "settings": null,
+    "currency": "USD",
+    "yearlyIncome": 4325,
+    "backersAndSponsorsCount": 1,
+    "membersCount": 1,
+    "sponsorsCount": 0,
+    "backersCount": 1,
+    "githubContributorsCount": 0,
+    "contributorsCount": 2
+  },
+  {
+    "id": 386,
+    "createdAt": "2016-11-26T20:54:51.409Z",
+    "name": "Preact",
+    "slug": "preact",
+    "image": "https://opencollective-production.s3-us-west-1.amazonaws.com/3fd44c50-b42b-11e6-8e7e-5955bbcb143d.png",
+    "backgroundImage": "https://opencollective-production.s3-us-west-1.amazonaws.com/8b0d1710-b425-11e7-9898-89bb7dc2e927.jpg",
+    "publicUrl": "https://opencollective.com/preact",
+    "mission": "We are on a mission to dramatically reduce app size.",
+    "settings": {
+      "githubRepo": "developit/preact",
+      "twitter": {
+        "thankDonation": "$backer thanks for backing us!",
+        "monthlyThankDonationsEnabled": true,
+        "monthlyThankDonationsSingular": "Thank you $backer for supporting our collective",
+        "monthlyThankDonationsPlural": "Thanks to our $backerCount backers and sponsors $backerList for supporting our collective"
+      }
+    },
+    "currency": "USD",
+    "yearlyIncome": 3246598,
+    "backersAndSponsorsCount": 84,
+    "membersCount": 3,
+    "sponsorsCount": 4,
+    "backersCount": 80,
+    "githubContributorsCount": 109,
+    "contributorsCount": 196
+  },
+  {
+    "id": 442,
+    "createdAt": "2017-01-19T18:56:22.248Z",
+    "name": "SustainOSS",
+    "slug": "sustainoss",
+    "image": "https://opencollective-production.s3-us-west-1.amazonaws.com/1c5464c0-2525-11e7-a9f9-ff687a2a7d70.png",
+    "backgroundImage": null,
+    "publicUrl": "https://opencollective.com/sustainoss",
+    "mission": "This is the first event for Open Source Software sustainers.",
+    "settings": {
+      "style": {
+        "hero": {
+          "cover": {
+            "transform": "scale(1.06)",
+            "backgroundImage": "url(https://opencollective.com/public/images/collectives/default-header-bg.jpg)",
+            "background": "rgb(38,50,56)"
+          },
+          "a": {}
+        }
+      },
+      "twitter": {
+        "thankDonation": "Hi $backer thanks for your donation to SustainOSS https://opencollective.com/sustainoss  🎉😊  #opensource",
+        "monthlyThankDonationsEnabled": false,
+        "monthlyThankDonationsSingular": "Thank you $backer for supporting our collective",
+        "monthlyThankDonationsPlural": "Thanks to our $backerCount backers and sponsors $backerList for supporting our collective"
+      }
+    },
+    "currency": "USD",
+    "yearlyIncome": 1034969,
+    "backersAndSponsorsCount": 103,
+    "membersCount": 10,
+    "sponsorsCount": 0,
+    "backersCount": 103,
+    "githubContributorsCount": 0,
+    "contributorsCount": 113
+  },
+  {
+    "id": 28,
+    "createdAt": "2016-09-16T18:04:35.879Z",
+    "name": "Rails Girls Atlanta",
+    "slug": "railsgirlsatl",
+    "image": "https://cl.ly/083w0L461x1x/railsgirlsatl-logo.png",
+    "backgroundImage": null,
+    "publicUrl": "https://opencollective.com/railsgirlsatl",
+    "mission": "We are on a mission to give tools and a community for women to understand technology and to build their ideas.",
+    "settings": {
+      "matchingFund": "b571d428",
+      "lang": "railsgirlsatl",
+      "twitter": {
+        "thankDonation": "🎉 $backer thanks for backing us on opencollective.com/railsgirlsatl 💟💟💟",
+        "monthlyThankDonationsEnabled": true,
+        "monthlyThankDonationsSingular": "Thank you $backer for supporting our collective on opencollective.com/railsgirlsatl 💟💟💟",
+        "monthlyThankDonationsPlural": "Thanks to our $backerCount backers and sponsors $backerList for supporting our collective 😻"
+      }
+    },
+    "currency": "USD",
+    "yearlyIncome": 217327,
+    "backersAndSponsorsCount": 25,
+    "membersCount": 6,
+    "sponsorsCount": 1,
+    "backersCount": 24,
+    "githubContributorsCount": 0,
+    "contributorsCount": 31
+  }
+]
+Done in 1.92s.
