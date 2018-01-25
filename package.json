@@ -1,9 +1,9 @@
 {
-  "name": "wdf-experimental",
+  "name": "wireline-graphql-project",
   "version": "0.0.1",
   "description": "WDF Site.",
   "license": "UNLICENSED",
-  "repository": "https://github.com/wirelineio/wdf-experimental",
+  "repository": "https://github.com/wirelineio/graphql-template",
   "private": true,
   "workspaces": [
     "sub/*"
@@ -25,6 +25,7 @@
   "scripts": {
     "test": "jest --no-cache --silent",
     "test-ci": "jest --no-cache --config jest-ci.config.json",
-    "upgrade": "yarn upgrade-interactive --latest"
+    "upgrade": "yarn upgrade-interactive --latest",
+    "get": ""
   }
 }

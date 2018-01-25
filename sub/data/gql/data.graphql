@@ -1,0 +1,32 @@
+#
+# Copyright 2018 Wireline, Inc.
+#
+
+#
+# Types
+#
+
+type Record {
+  titls: String
+}
+
+input RecordInput {
+  title: String!
+}
+
+#
+# Interfaces
+#
+
+type Query {
+  query: [Record]!
+}
+
+type Mutation {
+  insertRecords(records: [Record]): [Record]!
+}
+
+schema {
+  query: Query,
+  mutation: Mutation
+}

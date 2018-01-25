@@ -1,9 +1,9 @@
 {
-  "name": "@wirelineio/tools",
+  "name": "@wirelineio/graphql-data",
   "version": "0.0.1",
-  "description": "WDF tools.",
+  "description": "GraphQL server.",
   "license": "UNLICENSED",
-  "repository": "https://github.com/wirelineio/wdf-experimental",
+  "repository": "https://github.com/wirelineio/graphql-template",
   "main": "index.js",
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -11,7 +11,10 @@
     "babel-jest": "^22.0.4",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
-    "babel-preset-stage-0": "^6.24.1"
+    "babel-preset-stage-0": "^6.24.1",
+    "copy-webpack-plugin": "^4.3.1",
+    "serverless-webpack": "^4.2.0",
+    "webpack": "^3.10.0"
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
@@ -30,6 +33,6 @@
     "info": "sls wireline info",
     "webpack": "webpack",
     "clean": "rm -rf dist",
-    "grab": "babel-node ./grab_oc.js"
+    "grab": "babel-node ./scripts/grab_oc.js"
   }
 }
