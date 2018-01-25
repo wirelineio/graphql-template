@@ -12,7 +12,7 @@ import { ConnectedRouter } from 'react-router-redux';
  *
  * Integrates with Apollo and the Redux Router.
  */
-export default class AppContainer extends React.Component {
+export class AppContainer extends React.Component {
 
   static propTypes = {
     config:   PropTypes.object.isRequired,
@@ -22,8 +22,7 @@ export default class AppContainer extends React.Component {
   };
 
   static childContextTypes = {
-    config: PropTypes.object.isRequired,
-    queryManager: PropTypes.object.isRequired
+    config: PropTypes.object.isRequired
   };
 
   getChildContext() {

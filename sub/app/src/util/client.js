@@ -93,17 +93,13 @@ export class Client {
     this._store = createStore(
 
       // Reducers.
-      combineReducers({
+      combineReducers(_.merge({
         apollo: this._client.reducer(),
         router: routerReducer,
-
-        [AppReducer.NS]: appReducer.reducer()
-      }),
+      }, this.getReducerMap())),
 
       // State.
-      {
-        [AppReducer.NS]: appReducer.state
-      },
+      this.getInitialState(),
 
       // Middleware.
       compose(

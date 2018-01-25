@@ -7,17 +7,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
-import AppContainer from './util/container';
-import Client from './util/client';
+import { AppContainer } from './util/container';
+import { Client } from './util/client';
 
 /**
  * Apollo client.
  */
 class AppClient extends Client {
-
-  constructor() {
-    super(...arguments);
-  }
 
   /** Get app reducer. */
   getReducers() {
