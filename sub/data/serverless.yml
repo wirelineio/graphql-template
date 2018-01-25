@@ -109,11 +109,11 @@ custom:
 
 
 functions:
-  registry:
-    handler: handler.registry
-    description: "WDF Registry service."
+  graphql:
+    handler: handler.graphql
+    description: "GraphQL Data Service."
     events:
       - http:
-          path: registry
+          path: data
           method: post
           cors: true
