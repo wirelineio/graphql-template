@@ -151,7 +151,7 @@ export class Client {
       uri: apiRoot + '/data'      // TODO(burdon): Const.
     });
 
-    // mockDB testing
+    // mockDB testing - not working yet
     // let schema = createSchema();
     // let networkInterface = new LocalNetworkInterface({schema});
 

@@ -42,6 +42,7 @@ class AppRoutes extends React.Component {
     const HomePanel = (props) => {
       // let { params } = this.props;
 
+      // testing graphQL data query - not working yet
       client._client.query({ 
         query: gql`{allRecords{title}}`,
         variables: {},
