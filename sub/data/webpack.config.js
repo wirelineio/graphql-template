@@ -50,7 +50,14 @@ module.exports = {
             cacheDirectory: './dist/babel-cache/'
           }
         }
-      }
+      },
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,    // Don't transpile deps.
+        use: {
+          loader: 'graphql-tag/loader',
+        }
+      },
     ]
   }
 };

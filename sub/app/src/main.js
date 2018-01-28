@@ -43,7 +43,7 @@ class AppRoutes extends React.Component {
       // let { params } = this.props;
 
       client._client.query({ 
-        query: gql`{ hello }`,
+        query: gql`{allRecords{title}}`,
         variables: {},
       }).then(console.log);
 

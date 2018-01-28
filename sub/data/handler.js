@@ -3,9 +3,6 @@
 //
 
 import { graphql } from 'graphql';
-
-import Wireline from '@wirelineio/sdk';
-
 import { createSchema } from './src/resolvers';
 
 // TODO(burdon): From ENV.
@@ -13,47 +10,53 @@ const version = '0.0.1';
 
 const schema = createSchema();
 
-module.exports = {
+export function query(event, context, callback){
+  graphql(schema, event.queryStringParameters.query)
+    .then(
+      result => callback(null, {statusCode: 200, body: JSON.stringify(result)}),
+      err => callback(err)
+    )
+}
 
-  /**
-   * Registry GraphQL API.
-   */
-  registry: Wireline.graphql(async (event, context, response) => {
-    let { body } = event;
-    let { query, variables } = JSON.parse(body);
+/**
+ * Registry GraphQL API.
+ */
 
-    let queryRoot = {};
-    let queryContext = {};
+export async function registry(event, context, response){
+  let { body } = event;
+  let { query, variables } = JSON.parse(body);
 
-    // TODO(burdon): Factor out.
-    const format = query => {
-      return query.trim()
-        .replace(/\n */g, ' ')
-        .replace(/ +\{ +/g, ' { ')
-        .replace(/ +\} +/g, ' } ');
-    };
+  let queryRoot = {};
+  let queryContext = {};
 
-    // TODO(burdon): Await.
-    // TODO(burdon): Factor out GraphQL API to SDK.
-    console.log('Query:', JSON.stringify({ query: format(query), variables }));
+  // TODO(burdon): Factor out.
+  const format = query => {
+    return query.trim()
+      .replace(/\n */g, ' ')
+      .replace(/ +\{ +/g, ' { ')
+      .replace(/ +\} +/g, ' } ');
+  };
 
-    return graphql(schema, query, queryRoot, queryContext, variables).then(result => {
-      let { errors, data } = result;
+  // TODO(burdon): Await.
+  // TODO(burdon): Factor out GraphQL API to SDK.
+  console.log('Query:', JSON.stringify({ query: format(query), variables }));
 
-      // TODO(burdon): From config?
-      response.setCors();
+  return graphql(schema, query, queryRoot, queryContext, variables).then(result => {
+    let { errors, data } = result;
 
-      response.set({
-        'GQL-VERSION': version
-      });
+    // TODO(burdon): From config?
+    response.setCors();
 
-      if (errors) {
-        console.error('Error:', errors);
-        response.send({ errors });
-      } else {
-        console.log('Result:', JSON.stringify(data));
-        response.send({ data });
-      }
+    response.set({
+      'GQL-VERSION': version
     });
-  })
-};
+
+    if (errors) {
+      console.error('Error:', errors);
+      response.send({ errors });
+    } else {
+      console.log('Result:', JSON.stringify(data));
+      response.send({ data });
+    }
+  });
+}

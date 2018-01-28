@@ -12,8 +12,8 @@ import { routerReducer, routerMiddleware } from 'react-router-redux';
 import createHashHistory from 'history/createHashHistory';
 import * as _ from 'lodash';
 
-// pulls from data sub module
-import { createSchema } from '../../../data/src/resolvers';
+// TODO(zuspan): pull schema from /sub/data
+// import { createSchema } from '../../../data/src/resolvers';
 
 /**
  * Client App.
@@ -141,15 +141,19 @@ export class Client {
   async createNetworkInterface() {
     let { apiRoot } = this.config;
 
-    // commented for mockDB testing below
     // http://dev.apollodata.com/core/network.html#createNetworkInterface
-    // let networkInterface = createNetworkInterface({
-    //   uri: apiRoot + '/data'      // TODO(burdon): Const.
-    // });
+    
+    // for testing locally run 'sls offline start' on /sub/data first
+    let port = apiRoot.split(':').pop();
+    apiRoot = apiRoot.replace(port, '9000');
+    
+    let networkInterface = createNetworkInterface({
+      uri: apiRoot + '/data'      // TODO(burdon): Const.
+    });
 
-    //mockDB testing
-    let schema = createSchema();
-    let networkInterface = new LocalNetworkInterface({schema});
+    // mockDB testing
+    // let schema = createSchema();
+    // let networkInterface = new LocalNetworkInterface({schema});
 
     return Promise.resolve(networkInterface);
   }

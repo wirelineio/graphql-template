@@ -1,6 +1,6 @@
 {
   "presets": [
-    ["env", {
+    ["@babel/preset-env", {
       "debug": false,
       "targets": {
         "node": "6.10"

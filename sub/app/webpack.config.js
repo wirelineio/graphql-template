@@ -26,7 +26,7 @@ module.exports = {
     contentBase: path.join('testing'),
     compress: true,
     publicPath: '/assets/app/',
-    port: 9000
+    port: 3000
   },
 
   // https://webpack.js.org/configuration/resolve
