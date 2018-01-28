@@ -106,7 +106,16 @@ module.exports = {
         options: {
           limit: 8192,
         }
-      }
+      },
+
+      //https://www.apollographql.com/docs/react/recipes/webpack.html
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,    // Don't transpile deps.
+        use: {
+          loader: 'graphql-tag/loader',
+        }
+      },
     ]
   },
 

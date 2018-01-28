@@ -3,15 +3,22 @@
 //
 
 import { ApolloClient, createNetworkInterface } from 'apollo-client';
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 import { graphql } from 'graphql';
 import { print } from 'graphql/language/printer';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 import createHashHistory from 'history/createHashHistory';
+import * as _ from 'lodash';
+
+// pulls from data sub module
+import { createSchema } from '../../../data/src/resolvers';
 
 /**
  * Client App.
  */
+
 export class Client {
 
   /**
@@ -19,6 +26,7 @@ export class Client {
    * @param config
    * @param { networkInterface }options
    */
+
   constructor(config, options) {
     console.assert(config);
     this._config = config;
@@ -47,6 +55,8 @@ export class Client {
 
     // Check for injected network interface.
     let networkInterface = this._options.networkInterface || await this.createNetworkInterface();
+
+    
 
     //
     // Apollo client.
@@ -77,6 +87,10 @@ export class Client {
       // TODO(burdon): Flaky.
       // https://github.com/apollographql/apollo-client-devtools/pull/85 (11/22/17)
       connectToDevTools: true,
+
+      //default to '/graphql' enpoint on host
+      link: new HttpLink(),
+      cache: new InMemoryCache()
     });
 
     //
@@ -96,7 +110,7 @@ export class Client {
       combineReducers(_.merge({
         apollo: this._client.reducer(),
         router: routerReducer,
-      }, this.getReducerMap())),
+      }, this.getReducers())),
 
       // State.
       this.getInitialState(),
@@ -127,10 +141,15 @@ export class Client {
   async createNetworkInterface() {
     let { apiRoot } = this.config;
 
+    // commented for mockDB testing below
     // http://dev.apollodata.com/core/network.html#createNetworkInterface
-    let networkInterface = createNetworkInterface({
-      uri: apiRoot + '/data'      // TODO(burdon): Const.
-    });
+    // let networkInterface = createNetworkInterface({
+    //   uri: apiRoot + '/data'      // TODO(burdon): Const.
+    // });
+
+    //mockDB testing
+    let schema = createSchema();
+    let networkInterface = new LocalNetworkInterface({schema});
 
     return Promise.resolve(networkInterface);
   }
@@ -150,7 +169,7 @@ export class LocalNetworkInterface {
 
   async query(request) {
     let { query, variables, operationName } = request;
-
+    
     // TODO(burdon): Factor out logger.
     console.log('=>>', operationName, JSON.stringify(variables));
     return await graphql(this._schema, print(query), this._root, this._context, variables).then(response => {
