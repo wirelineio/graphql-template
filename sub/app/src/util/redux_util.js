@@ -28,5 +28,3 @@ export class ReduxUtil {
     return connect.call(null, mapStateToProps, mapDispatchToProps, mergeProps, options);
   }
 }
-
-//https://github.com/reactjs/react-redux/blob/master/docs/api.md

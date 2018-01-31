@@ -23,3 +23,26 @@ this will run the app on port 3000 (e.g., http://localhost:3000)
 TODO(zuspan):
 * finish serverless implimentation
 * finish web submodule
+
+
+##Sample Data Queries
+
+query example:
+```
+$ curl http://localhost:9000/data \
+	-X POST \
+	-H "Content-Type: application/json" \
+	-d '{ "query": "{ records { title } }" }'
+	
+```
+
+mutation example:
+```
+$ curl http://localhost:9000/data \
+	-X POST \
+	-H "Content-Type: application/json" \
+	-d '{"query": "mutation($title:String!){insertRecords(records:[{title:$title}]){title}}","variables":{"title":"New Record"}}'
+	
+
+```
+

@@ -3,8 +3,6 @@
 //
 
 import { ApolloClient, createNetworkInterface } from 'apollo-client';
-import { HttpLink } from 'apollo-link-http';
-import { InMemoryCache } from 'apollo-cache-inmemory';
 import { graphql } from 'graphql';
 import { print } from 'graphql/language/printer';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
@@ -84,10 +82,6 @@ export class Client {
       // TODO(burdon): Flaky.
       // https://github.com/apollographql/apollo-client-devtools/pull/85 (11/22/17)
       connectToDevTools: true,
-
-      //default to '/graphql' enpoint on host
-      link: new HttpLink(),
-      cache: new InMemoryCache()
     });
 
     //

@@ -39,7 +39,7 @@ class Records extends React.Component {
       );
     } else {
 
-      //no records supplied to properties
+      // no records supplied to properties
       return (
         <div>
           no records

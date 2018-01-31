@@ -49,6 +49,8 @@ export class Resolvers {
         
         // sample serverless-offline call: http://localhost:9000/data?query=mutation{insertRecords(records:[{title:%22this%22}]){title}}
         insertRecords: async (obj, args, context) => {
+          console.log('hi from mutation');
+          console.log(args);
           return args.records;
         }
       }
