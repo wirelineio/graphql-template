@@ -1,5 +1,5 @@
 #
-# Copyright 2017 Wireline, Inc.
+# Copyright 2018 Wireline, Inc.
 #
 
 #
@@ -10,7 +10,7 @@
 # https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions?display=list
 #
 
-service: wdf-registry
+service: wli-graphql-data
 
 
 provider:
@@ -109,13 +109,12 @@ custom:
       "wireline.io/wireline-auth": "https://auth.wireline.ninja"
       "wireline.io/wireline-store": "https://store.wireline.ninja"
 
-
 functions:
   graphql:
-    handler: handler.query
+    handler: handler.graphQL
     description: "GraphQL Data Service."
     events:
       - http:
           path: data
-          method: get
-          # cors: true
+          method: post
+          cors: true # https://serverless.com/framework/docs/providers/aws/events/apigateway#enabling-cors

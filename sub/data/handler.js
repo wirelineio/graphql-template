@@ -1,4 +1,4 @@
-//
+  //
 // Copyright 2018 Wireline, Inc.
 //
 
@@ -10,19 +10,12 @@ const version = '0.0.1';
 
 const schema = createSchema();
 
-export function query(event, context, callback){
-  graphql(schema, event.queryStringParameters.query)
-    .then(
-      result => callback(null, {statusCode: 200, body: JSON.stringify(result)}),
-      err => callback(err)
-    )
-}
-
 /**
  * Registry GraphQL API.
  */
 
-export async function registry(event, context, response){
+// TODO(zuspan): convert to async with response
+export async function graphQL(event, context, callback){
   let { body } = event;
   let { query, variables } = JSON.parse(body);
 
@@ -44,19 +37,26 @@ export async function registry(event, context, response){
   return graphql(schema, query, queryRoot, queryContext, variables).then(result => {
     let { errors, data } = result;
 
-    // TODO(burdon): From config?
-    response.setCors();
-
-    response.set({
-      'GQL-VERSION': version
-    });
-
+    let body = '';
     if (errors) {
-      console.error('Error:', errors);
-      response.send({ errors });
+      console.error('Error', errors);
+      body = JSON.stringify({ errors });
     } else {
-      console.log('Result:', JSON.stringify(data));
-      response.send({ data });
+      console.log('Result:', body);
+      body = JSON.stringify({ data });
     }
+
+    const response = {
+      statusCode: 200,
+      headers: {
+        'GQL-VERSION': version
+      },
+      body: body
+    };
+
+    //TODO(burdon): resolve cors - perhaps in serverless.yml rather than here
+
+    callback(null, response);
+
   });
 }

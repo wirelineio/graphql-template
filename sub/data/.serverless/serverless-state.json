@@ -1,8 +1,8 @@
 {
   "service": {
-    "service": "wdf-registry",
+    "service": "wli-graphql-data",
     "serviceObject": {
-      "name": "wdf-registry"
+      "name": "wli-graphql-data"
     },
     "provider": {
       "stage": "dev",
@@ -12,7 +12,7 @@
       "runtime": "nodejs6.10",
       "timeout": 30,
       "environment": {
-        "WRL_SERVICE_NAME": "wdf-registry",
+        "WRL_SERVICE_NAME": "wli-graphql-data",
         "WRL_VERSION": "0.0.1",
         "WRL_CONFIG_DIR": "./config",
         "AWS_USER": "service-dev",
@@ -25,17 +25,12 @@
         "Description": "The AWS CloudFormation template for this Serverless application",
         "Resources": {
           "ServerlessDeploymentBucket": {
-            "Type": "AWS::S3::Bucket",
-            "Properties": {
-              "AccelerateConfiguration": {
-                "AccelerationStatus": "Suspended"
-              }
-            }
+            "Type": "AWS::S3::Bucket"
           },
           "GraphqlLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/wdf-registry-dev-graphql"
+              "LogGroupName": "/aws/lambda/wli-graphql-data-dev-graphql"
             }
           },
           "IamRoleLambdaExecution": {
@@ -64,7 +59,7 @@
                       "-",
                       [
                         "dev",
-                        "wdf-registry",
+                        "wli-graphql-data",
                         "lambda"
                       ]
                     ]
@@ -79,7 +74,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/wdf-registry-dev-graphql:*"
+                            "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/wli-graphql-data-dev-graphql:*"
                           }
                         ]
                       },
@@ -90,7 +85,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/wdf-registry-dev-graphql:*:*"
+                            "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/wli-graphql-data-dev-graphql:*:*"
                           }
                         ]
                       }
@@ -103,7 +98,7 @@
                 "Fn::Join": [
                   "-",
                   [
-                    "wdf-registry",
+                    "wli-graphql-data",
                     "dev",
                     "us-east-1",
                     "lambdaRole"
@@ -119,10 +114,10 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/wdf-registry/dev/1517165232653-2018-01-28T18:47:12.653Z/wdf-registry.zip"
+                "S3Key": "serverless/wli-graphql-data/dev/1517363087549-2018-01-31T01:44:47.549Z/wli-graphql-data.zip"
               },
-              "FunctionName": "wdf-registry-dev-graphql",
-              "Handler": "handler.query",
+              "FunctionName": "wli-graphql-data-dev-graphql",
+              "Handler": "handler.graphQL",
               "MemorySize": 1024,
               "Role": {
                 "Fn::GetAtt": [
@@ -135,7 +130,7 @@
               "Description": "GraphQL Data Service.",
               "Environment": {
                 "Variables": {
-                  "WRL_SERVICE_NAME": "wdf-registry",
+                  "WRL_SERVICE_NAME": "wli-graphql-data",
                   "WRL_VERSION": "0.0.1",
                   "WRL_CONFIG_DIR": "./config",
                   "AWS_USER": "service-dev",
@@ -148,21 +143,21 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "GraphqlLambdaVersionlu8GSrQK22p0KzcV6dvKHEG8e45TLpon4a8W1wYhV4": {
+          "GraphqlLambdaVersion5EGXt3ZJJNpSPt5dIbpqZJFWfX1f8RyoAZClQfSLtM": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GraphqlLambdaFunction"
               },
-              "CodeSha256": "JvO3X3rafn2ZoaWHN4vDi8dXU2rMc+WYO7HeaLPmWtM=",
+              "CodeSha256": "rLrz70eka1C0oSSpCiC7mkjXqIh9UZQMpSHAgLqV95g=",
               "Description": "GraphQL Data Service."
             }
           },
           "ApiGatewayRestApi": {
             "Type": "AWS::ApiGateway::RestApi",
             "Properties": {
-              "Name": "dev-wdf-registry",
+              "Name": "dev-wli-graphql-data",
               "EndpointConfiguration": {
                 "Types": [
                   "EDGE"
@@ -185,10 +180,56 @@
               }
             }
           },
-          "ApiGatewayMethodDataGet": {
+          "ApiGatewayMethodDataOptions": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
-              "HttpMethod": "GET",
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true,
+                    "method.response.header.Access-Control-Allow-Credentials": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'",
+                      "method.response.header.Access-Control-Allow-Credentials": "'false'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": ""
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceData"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodDataPost": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "POST",
               "RequestParameters": {},
               "ResourceId": {
                 "Ref": "ApiGatewayResourceData"
@@ -224,7 +265,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1517165232667": {
+          "ApiGatewayDeployment1517363087562": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -233,7 +274,7 @@
               "StageName": "dev"
             },
             "DependsOn": [
-              "ApiGatewayMethodDataGet"
+              "ApiGatewayMethodDataPost"
             ]
           },
           "GraphqlLambdaPermissionApiGateway": {
@@ -279,7 +320,7 @@
           "GraphqlLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GraphqlLambdaVersionlu8GSrQK22p0KzcV6dvKHEG8e45TLpon4a8W1wYhV4"
+              "Ref": "GraphqlLambdaVersion5EGXt3ZJJNpSPt5dIbpqZJFWfX1f8RyoAZClQfSLtM"
             }
           },
           "ServiceEndpoint": {
@@ -304,12 +345,7 @@
         "Description": "The AWS CloudFormation template for this Serverless application",
         "Resources": {
           "ServerlessDeploymentBucket": {
-            "Type": "AWS::S3::Bucket",
-            "Properties": {
-              "AccelerateConfiguration": {
-                "AccelerationStatus": "Suspended"
-              }
-            }
+            "Type": "AWS::S3::Bucket"
           }
         },
         "Outputs": {
@@ -351,27 +387,46 @@
     ],
     "functions": {
       "graphql": {
-        "handler": "handler.query",
+        "handler": "handler.graphQL",
         "description": "GraphQL Data Service.",
         "events": [
           {
             "http": {
               "path": "data",
-              "method": "get",
+              "method": "post",
+              "cors": {
+                "origins": [
+                  "*"
+                ],
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "POST"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent"
+                ],
+                "allowCredentials": false
+              },
               "integration": "AWS_PROXY"
             }
           }
         ],
-        "name": "wdf-registry-dev-graphql",
+        "name": "wli-graphql-data-dev-graphql",
         "package": {
-          "artifact": ".serverless/wdf-registry.zip"
+          "artifact": ".serverless/wli-graphql-data.zip"
         },
         "vpc": {}
       }
     }
   },
   "package": {
-    "artifactDirectoryName": "serverless/wdf-registry/dev/1517165232653-2018-01-28T18:47:12.653Z",
+    "artifactDirectoryName": "serverless/wli-graphql-data/dev/1517363087549-2018-01-31T01:44:47.549Z",
     "artifact": ""
   }
 }

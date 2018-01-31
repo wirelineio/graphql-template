@@ -1,5 +1,5 @@
 //
-// Copyright 2017 Wireline, Inc.
+// Copyright 2018 Wireline, Inc.
 //
 
 const fs = require('fs');
@@ -26,7 +26,7 @@ module.exports = {
     contentBase: path.join('testing'),
     compress: true,
     publicPath: '/assets/app/',
-    port: 3000
+    port: 3000,
   },
 
   // https://webpack.js.org/configuration/resolve

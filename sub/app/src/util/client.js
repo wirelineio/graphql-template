@@ -1,5 +1,5 @@
 //
-// Copyright 2017 Wireline, Inc.
+// Copyright 2018 Wireline, Inc.
 //
 
 import { ApolloClient, createNetworkInterface } from 'apollo-client';
@@ -11,9 +11,6 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 import createHashHistory from 'history/createHashHistory';
 import * as _ from 'lodash';
-
-// TODO(zuspan): pull schema from /sub/data
-// import { createSchema } from '../../../data/src/resolvers';
 
 /**
  * Client App.
@@ -143,17 +140,9 @@ export class Client {
 
     // http://dev.apollodata.com/core/network.html#createNetworkInterface
     
-    // for testing locally run 'sls offline start' on /sub/data first
-    let port = apiRoot.split(':').pop();
-    apiRoot = apiRoot.replace(port, '9000');
-    
     let networkInterface = createNetworkInterface({
       uri: apiRoot + '/data'      // TODO(burdon): Const.
     });
-
-    // mockDB testing - not working yet
-    // let schema = createSchema();
-    // let networkInterface = new LocalNetworkInterface({schema});
 
     return Promise.resolve(networkInterface);
   }

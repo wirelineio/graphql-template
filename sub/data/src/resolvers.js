@@ -1,5 +1,5 @@
 //
-// Copyright 2017 Wireline, Inc.
+// Copyright 2018 Wireline, Inc.
 //
 
 import { concatenateTypeDefs, makeExecutableSchema } from 'graphql-tools';
@@ -40,9 +40,8 @@ export class Resolvers {
         //               (with a simple in-memory store).
 
         // sample serverless-offline call: http://localhost:9000/data?query={allRecords{title}}
-        allRecords: async (obj, args, context) => {
-          console.log(args);
-          return [{title: 'Hello World'}];
+        records: async (obj, args, context) => {
+          return [{title: 'Hello World (1)'},{title: 'Hello World (2)'}];
         }
       },
 

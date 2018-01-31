@@ -1,5 +1,5 @@
 //
-// Copyright 2017 Wireline, Inc.
+// Copyright 2018 Wireline, Inc.
 //
 
 import PropTypes from 'prop-types';

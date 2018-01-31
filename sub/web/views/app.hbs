@@ -1,0 +1,10 @@
+{{#section 'head'}}
+<link rel="stylesheet" href="{{ appBundle.css }}">
+{{/section}}
+
+{{#section 'body'}}
+<div id="{{ appConfig.rootId }}"></div>
+
+<script>window.config = {{{ json appConfig }}};</script>
+<script src="{{ appBundle.js }}"></script>
+{{/section}}

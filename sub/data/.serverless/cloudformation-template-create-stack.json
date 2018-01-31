@@ -3,12 +3,7 @@
   "Description": "The AWS CloudFormation template for this Serverless application",
   "Resources": {
     "ServerlessDeploymentBucket": {
-      "Type": "AWS::S3::Bucket",
-      "Properties": {
-        "AccelerateConfiguration": {
-          "AccelerationStatus": "Suspended"
-        }
-      }
+      "Type": "AWS::S3::Bucket"
     }
   },
   "Outputs": {

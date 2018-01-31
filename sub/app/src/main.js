@@ -1,5 +1,5 @@
 //
-// Copyright 2017 Wireline, Inc.
+// Copyright 2018 Wireline, Inc.
 //
 
 import PropTypes from 'prop-types';
@@ -8,9 +8,7 @@ import ReactDOM from 'react-dom';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { AppContainer } from './util/container';
 import { Client } from './util/client';
-import gql from 'graphql-tag';
-import popsicle from 'popsicle';
-
+import RecordsContainer from './containers/records_container';
 
 /**
  * Apollo client.
@@ -43,21 +41,10 @@ class AppRoutes extends React.Component {
     const HomePanel = (props) => {
       // let { params } = this.props;
 
-      // testing graphQL data query - not working yet
-      // client._client.query({ 
-      //   query: gql`query {allRecords{title}}`,
-      //   variables: {},
-      // }).then(console.log);
-      console.log(window);
-      popsicle.get('/users.json')
-        .then(function (res) {
-          console.log(res.status) //=> 200
-          console.log(res.body) //=> { ... }
-          console.log(res.headers) //=> { ... }
-        })
-
       return (
-        <div>Home</div>
+        <div>
+          <RecordsContainer />
+        </div>
       );
     };
 

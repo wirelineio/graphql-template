@@ -19,7 +19,7 @@ input RecordInput {
 #
 
 type Query {
-  allRecords: [Record]!
+  records: [Record]!
 }
 
 type Mutation {

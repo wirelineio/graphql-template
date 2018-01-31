@@ -22,7 +22,6 @@
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
     "lodash": "^4.17.4",
-    "popsicle": "^9.2.0",
     "serverless-finch": "^1.1.1",
     "style-loader": "^0.19.1",
     "url-loader": "^0.6.2",
@@ -57,6 +56,6 @@
     "clean": "rm -rf client/dist",
     "webpack": "webpack",
     "start": "webpack-dev-server",
-    "deploy": "npm run-script webpack && sls client deploy"
+    "deploy": "sls webpack && sls client deploy"
   }
 }

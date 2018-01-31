@@ -1,0 +1,41 @@
+#
+# Copyright 2018 Wireline, Inc.
+#
+
+#
+# Config:
+# https://serverless.com/framework/docs/providers/aws/guide/serverless.yml
+#
+# Console:
+# https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions?display=list
+#
+
+service: wli-graphql-app
+
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  region: us-east-1
+  stage: dev
+
+
+plugins:
+
+  # Webpack
+  # NOTE: ORDER IS IMPORTANT
+  # NOTE: Configures packaging (replaces serverless.yml package defs).
+  # https://github.com/serverless-heaven/serverless-webpack/#usage-with-serverless-offline
+  # https://www.npmjs.com/package/serverless-webpack
+  - "serverless-webpack"
+
+  # Static assets
+  # https://www.npmjs.com/package/serverless-finch
+  - "serverless-finch"
+
+
+custom:
+  client:
+    # sls client deploy
+    # https://s3.amazonaws.com/wireline-app-assets
+    bucketName: wli-graphql-app-assets

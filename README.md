@@ -9,6 +9,8 @@ cd sub/data
 sls offline start
 ```
 
+this will run the data on port 9000 (e.g., http://localhost:9000)
+
 then, in another terminal window:
 
 ```
@@ -16,7 +18,8 @@ cd sub/app
 yarn start
 ```
 
-(not working yet)
+this will run the app on port 3000 (e.g., http://localhost:3000)
 
-to be resolved:
-- ApolloClient usage
+TODO(zuspan):
+* finish serverless implimentation
+* finish web submodule
