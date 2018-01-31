@@ -20,12 +20,8 @@ yarn start
 
 this will run the app on port 3000 (e.g., http://localhost:3000)
 
-TODO(zuspan):
-* finish serverless implimentation
-* finish web submodule
 
-
-##Sample Data Queries
+## Sample Data Queries
 
 query example:
 ```
@@ -46,3 +42,7 @@ $ curl http://localhost:9000/data \
 
 ```
 
+
+TODO(zuspan):
+* finish serverless implimentation
+* finish web submodule

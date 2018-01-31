@@ -21,13 +21,13 @@ const RecordsContainer = compose(
       };
     },
     props: ({ ownProps, data }) => {
-      let { domain } = ownProps;
+      // let { domain } = ownProps; // not used in this example
       let { errors, loading, refetch } = data;
       let { records } = data;
 
       // TODO(burdon): Util to wrap standard data params.
       return {
-        errors, loading, refetch, records, domain
+        errors, loading, refetch, records
       }
     },
   })
