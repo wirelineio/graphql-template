@@ -1,7 +1,8 @@
 //
-// Copyright 2017 Wireline, Inc.
+// Copyright 2018 Wireline, Inc.
 //
 
+import * as _ from 'lodash';
 import { concatenateTypeDefs, makeExecutableSchema } from 'graphql-tools';
 
 import RegistrySchema from '../gql/data.graphql';
@@ -38,12 +39,20 @@ export class Resolvers {
         // TODO(burdon): Create DB abstraction and pass into resolver object.
         // TODO(burdon): Enable resolver to be used "in-memory" with the client in test mode
         //               (with a simple in-memory store).
-        query: async (obj, args, context) => {
-          return [];
+
+        // sample serverless-offline call: http://localhost:9000/data?query={allRecords{title}}
+        records: async (obj, args, context) => {
+          return [{ title: 'Hello World (1)' },{ title: 'Hello World (2)' }];
         }
       },
 
-      Mutation: {}
+      Mutation: {
+        
+        // sample serverless-offline call: http://localhost:9000/data?query=mutation{insertRecords(records:[{title:%22this%22}]){title}}
+        insertRecords: async (obj, args, context) => {
+          return args.records;
+        }
+      }
     };
   }
 }

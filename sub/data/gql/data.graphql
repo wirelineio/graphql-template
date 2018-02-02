@@ -7,7 +7,7 @@
 #
 
 type Record {
-  titls: String
+  title: String
 }
 
 input RecordInput {
@@ -19,11 +19,11 @@ input RecordInput {
 #
 
 type Query {
-  query: [Record]!
+  records: [Record]!
 }
 
 type Mutation {
-  insertRecords(records: [Record]): [Record]!
+  insertRecords(records: [RecordInput]): [Record]!
 }
 
 schema {

@@ -2,9 +2,9 @@
 // Copyright 2018 Wireline, Inc.
 //
 
+import fs from 'fs';
 import cheerio from 'cheerio';
 import { request, plugins } from 'popsicle';
-import fs from 'fs';
 
 const dir = './dist';
 

@@ -1,0 +1,50 @@
+{
+  "name": "@wirelineio/graphql-web",
+  "version": "0.0.1",
+  "description": "Wireline GraphQL Website.",
+  "license": "UNLICENSED",
+  "repository": "https://github.com/wirelineio/graphql-template",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-jest": "^22.0.4",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-inline-import": "^2.0.6",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "copy-webpack-plugin": "^4.3.1",
+    "serverless-domain-manager": "^2.0.2",
+    "serverless-finch": "^1.1.1",
+    "serverless-log-forwarding": "^1.1.5",
+    "serverless-offline": "^3.16.0",
+    "serverless-plugin-info-json": "^1.0.1",
+    "serverless-webpack": "^4.2.0",
+    "webpack": "^3.9.1"
+  },
+  "dependencies": {
+    "aws-serverless-express": "^3.0.2",
+    "babel-runtime": "^6.26.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "lodash": "^4.17.4"
+  },
+  "jest": {
+    "verbose": false,
+    "cacheDirectory": "/tmp/jest",
+    "transformIgnorePatterns": [
+      "/node_modules/(?!@fullstackmodular)"
+    ]
+  },
+  "scripts": {
+    "lint": "eslint -c ../../eslintrc.yml ./src",
+    "test": "jest --no-cache --silent",
+    "webpack": "webpack",
+    "deploy-assets": "rm -rf client/dist && mkdir -p client/dist && cp -R assets/* client/dist && sls client deploy",
+    "deploy-service": "sls deploy",
+    "deploy": "npm run-script deploy-assets && npm run-script deploy-service",
+    "logs": "sls logs -f express -t --startTime 1m",
+    "start": "WRL_CONFIG_DIR=.webpack/service/config sls offline -c"
+  }
+}

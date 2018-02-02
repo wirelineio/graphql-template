@@ -19,7 +19,7 @@
     "flow-bin": "^0.61.0",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
-    "popsicle": "^9.2.0",
+    "lodash": "^4.17.4",
     "serverless-finch": "^1.1.1",
     "style-loader": "^0.19.1",
     "url-loader": "^0.6.2",
@@ -32,7 +32,6 @@
     "graphql": "^0.12.3",
     "graphql-tag": "^2.6.1",
     "history": "^4.7.2",
-    "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-apollo": "^1.4.16",
@@ -54,6 +53,6 @@
     "clean": "rm -rf client/dist",
     "webpack": "webpack",
     "start": "webpack-dev-server",
-    "deploy": "npm run-script webpack && sls client deploy"
+    "deploy": "sls webpack && sls client deploy"
   }
 }

@@ -1,5 +1,5 @@
 //
-// Copyright 2017 Wireline, Inc.
+// Copyright 2018 Wireline, Inc.
 //
 
 import PropTypes from 'prop-types';
@@ -9,6 +9,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 import { AppContainer } from './util/container';
 import { Client } from './util/client';
+import RecordsContainer from './containers/records_container';
 
 /**
  * Apollo client.
@@ -38,10 +39,12 @@ class AppRoutes extends React.Component {
   render() {
 
     const HomePanel = (props) => {
-//    let { params } = this.props;
+      // let { params } = this.props;
 
       return (
-        <div>Home</div>
+        <div>
+          <RecordsContainer/>
+        </div>
       );
     };
 

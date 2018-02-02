@@ -1,5 +1,5 @@
 //
-// Copyright 2017 Wireline, Inc.
+// Copyright 2018 Wireline, Inc.
 //
 
 const fs = require('fs');
@@ -26,7 +26,7 @@ module.exports = {
     contentBase: path.join('testing'),
     compress: true,
     publicPath: '/assets/app/',
-    port: 9000
+    port: 3000,
   },
 
   // https://webpack.js.org/configuration/resolve
@@ -106,7 +106,16 @@ module.exports = {
         options: {
           limit: 8192,
         }
-      }
+      },
+
+      //https://www.apollographql.com/docs/react/recipes/webpack.html
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,    // Don't transpile deps.
+        use: {
+          loader: 'graphql-tag/loader',
+        }
+      },
     ]
   },
 

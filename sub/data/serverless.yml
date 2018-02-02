@@ -1,5 +1,5 @@
 #
-# Copyright 2017 Wireline, Inc.
+# Copyright 2018 Wireline, Inc.
 #
 
 #
@@ -10,7 +10,7 @@
 # https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions?display=list
 #
 
-service: wdf-registry
+service: wireline-graphql-data
 
 
 provider:
@@ -39,13 +39,14 @@ plugins:
   # https://www.npmjs.com/package/serverless-webpack
   - "serverless-webpack"
 
+  # TODO(burdon): integrate domain manager if needed
   # https://www.npmjs.com/package/serverless-domain-manager
-  - "serverless-domain-manager"
+  # - "serverless-domain-manager"
 
   # TODO(burdon): Encapsulate with serverless-wireline.
   # NOTE: Must remove until deployed, then update custom ARN below.
   # https://github.com/amplify-education/serverless-log-forwarding
-  - "serverless-log-forwarding"
+  # - "serverless-log-forwarding"
 
   # TODO(burdon): DynamoDB local.
   # https://www.gorillastack.com/news/serverless-framework-local-development-environments
@@ -60,33 +61,34 @@ plugins:
   # https://www.npmjs.com/package/serverless-plugin-info-json
   - "serverless-plugin-info-json"
 
+  #  TODO(burdon): integrate if needed
   # https://github.com/serverless/serverless/issues/4443
-  - "@wirelineio/serverless-wireline"
+  # - "@wirelineio/serverless-wireline"
 
 
 custom:
   webpack: "webpack.config.js"
 
-  customDomain:
-    domainName: registry.wireline.xyz
-    basePath: ''
-    stage: ${self:provider.stage}
-    createRoute53Record: true
+  # customDomain:
+  #   domainName: registry.wireline.xyz
+  #   basePath: ''
+  #   stage: ${self:provider.stage}
+  #   createRoute53Record: true
 
-  logForwarding:
+  # logForwarding:
 
-    # Deploy function below then:
-    # sls info --json -v | jq ".outputs.LoggerLambdaFunctionQualifiedArn" (remove :1 version)
-    destinationARN: "arn:aws:lambda:us-east-1:370180315098:function:wireline-metrics-dev-logger"
+  #   # Deploy function below then:
+  #   # sls info --json -v | jq ".outputs.LoggerLambdaFunctionQualifiedArn" (remove :1 version)
+  #   destinationARN: "arn:aws:lambda:us-east-1:370180315098:function:wireline-metrics-dev-logger"
 
-    # http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html
-    filterPattern: "\"METRIC:\""
+  #   # http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html
+  #   filterPattern: "\"METRIC:\""
 
-    # Must be different stage from this, otherwise:
-    # An error occurred: SubscriptionFilterLogger - The log group provided is reserved for the function logs of the destination function..
-    # https://github.com/amplify-education/serverless-log-forwarding/issues/13
-    stages:
-      - dev
+  #   # Must be different stage from this, otherwise:
+  #   # An error occurred: SubscriptionFilterLogger - The log group provided is reserved for the function logs of the destination function..
+  #   # https://github.com/amplify-education/serverless-log-forwarding/issues/13
+  #   stages:
+  #     - dev
 
   # TODO(burdon): Config dir: ../../config (workaround ln -s)
   # https://www.npmjs.com/package/serverless-offline#usage-and-command-line-options
@@ -107,13 +109,12 @@ custom:
       "wireline.io/wireline-auth": "https://auth.wireline.ninja"
       "wireline.io/wireline-store": "https://store.wireline.ninja"
 
-
 functions:
   graphql:
-    handler: handler.graphql
+    handler: handler.graphQL
     description: "GraphQL Data Service."
     events:
       - http:
           path: data
           method: post
-          cors: true
+          cors: true # https://serverless.com/framework/docs/providers/aws/events/apigateway#enabling-cors

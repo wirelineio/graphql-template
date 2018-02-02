@@ -1,13 +1,14 @@
 //
-// Copyright 2017 Wireline, Inc.
+// Copyright 2018 Wireline, Inc.
 //
 
+import * as _ from 'lodash';
+import createHashHistory from 'history/createHashHistory';
 import { ApolloClient, createNetworkInterface } from 'apollo-client';
 import { graphql } from 'graphql';
 import { print } from 'graphql/language/printer';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
-import createHashHistory from 'history/createHashHistory';
 
 /**
  * Client App.
@@ -19,6 +20,7 @@ export class Client {
    * @param config
    * @param { networkInterface }options
    */
+
   constructor(config, options) {
     console.assert(config);
     this._config = config;
@@ -47,6 +49,8 @@ export class Client {
 
     // Check for injected network interface.
     let networkInterface = this._options.networkInterface || await this.createNetworkInterface();
+
+    
 
     //
     // Apollo client.
@@ -96,7 +100,7 @@ export class Client {
       combineReducers(_.merge({
         apollo: this._client.reducer(),
         router: routerReducer,
-      }, this.getReducerMap())),
+      }, this.getReducers())),
 
       // State.
       this.getInitialState(),
@@ -128,6 +132,7 @@ export class Client {
     let { apiRoot } = this.config;
 
     // http://dev.apollodata.com/core/network.html#createNetworkInterface
+    
     let networkInterface = createNetworkInterface({
       uri: apiRoot + '/data'      // TODO(burdon): Const.
     });
@@ -150,7 +155,7 @@ export class LocalNetworkInterface {
 
   async query(request) {
     let { query, variables, operationName } = request;
-
+    
     // TODO(burdon): Factor out logger.
     console.log('=>>', operationName, JSON.stringify(variables));
     return await graphql(this._schema, print(query), this._root, this._context, variables).then(response => {

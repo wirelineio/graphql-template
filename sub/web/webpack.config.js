@@ -2,8 +2,14 @@
 // Copyright 2018 Wireline, Inc.
 //
 
+const fs = require('fs');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+// TODO(burdon): Factor out.
+const getDirectories = source => fs.readdirSync(source)
+  .map(name => path.resolve(source, name))
+  .filter(source => fs.lstatSync(source).isDirectory());
 
 module.exports = {
 
@@ -17,24 +23,26 @@ module.exports = {
     ]
   },
 
-  // https://github.com/serverless-heaven/serverless-webpack#output
-  // https://webpack.js.org/configuration/output/#module-definition-systems
   output: {
     path: path.resolve('./dist'),
     filename: '[name].js',
     libraryTarget: 'commonjs2'
   },
 
-  // Copy static files to deployment (available locally to Lambda functions).
+  // Copy asset files to deployment (available locally to Lambda functions).
   // unzip -vl .serverless/web.zip
-  // plugins: [
-  //   new CopyWebpackPlugin([
-  //     {
-  //       from: './data',
-  //       to: 'data'
-  //     }
-  //   ])
-  // ],
+  plugins: [
+    new CopyWebpackPlugin([
+      {
+        from: 'views',
+        to: 'views'
+      },
+      {
+        from: 'assets',
+        to: 'assets'
+      }
+    ])
+  ],
 
   module: {
     rules: [
@@ -42,7 +50,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,    // Don't transpile deps.
         include: [
-          '.'
+          getDirectories('..')
         ],
         use: {
           loader: 'babel-loader',
@@ -50,14 +58,7 @@ module.exports = {
             cacheDirectory: './dist/babel-cache/'
           }
         }
-      },
-      {
-        test: /\.(graphql|gql)$/,
-        exclude: /node_modules/,    // Don't transpile deps.
-        use: {
-          loader: 'graphql-tag/loader',
-        }
-      },
+      }
     ]
   }
 };

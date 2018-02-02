@@ -1,0 +1,93 @@
+#
+# Copyright 2018 Wireline, Inc.
+#
+
+#
+# Build artifacts (creates packaging).
+# sls webpack
+# ./webpack
+#
+# Deploy
+# sls deploy
+# ./serverless
+# unzip -vl .serverless/web.zip
+#
+
+service: wireline-graphql-web
+
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  region: us-east-1
+  stage: dev
+
+  environment:
+    SERVICE_NAME: ${self:service}
+
+
+plugins:
+
+  # Webpack
+  # NOTE: ORDER IS IMPORTANT
+  # NOTE: Configures packaging (replaces serverless.yml package defs).
+  # https://github.com/serverless-heaven/serverless-webpack/#usage-with-serverless-offline
+  # https://www.npmjs.com/package/serverless-webpack
+  - "serverless-webpack"
+
+  # Custom domain name.
+  # https://serverless.com/blog/serverless-api-gateway-domain
+  # https://www.npmjs.com/package/serverless-domain-manager
+#  - "serverless-domain-manager"
+
+  # Static assets
+  # https://www.npmjs.com/package/serverless-finch
+  - "serverless-finch"
+
+
+custom:
+
+  # https://console.aws.amazon.com/route53/home#DomainListing
+  # https://serverless.com/blog/serverless-api-gateway-domain
+  # aws acm list-certificates
+  # sls create_domain
+  #   Assigns cert to domain and configures CNAMES
+#  customDomain:
+#    basePath: ""                                        # NOTE: Must delete and re-create if changed.
+#    domainName: "console-dev.fullstackmodular.ninja"    # NOTE: Must NOT be quotes.
+#    createRoute53Record: true
+#    stage: ${self:provider.stage}
+
+  client:
+    # sls client deploy
+    # https://s3.amazonaws.com/wireline-console-web-assets
+    bucketName: wireline-graphql-web-assets
+
+
+functions:
+
+  express:
+    handler: handler.express
+    description: "Web server."
+    events:
+
+      # Pages.
+      - http:
+          path: /
+          method: get
+      - http:
+          path: app
+          method: get
+
+      # JS bundle.
+      - http:
+          path: assets/app/{path}
+          method: get
+
+      # Web site assets.
+      - http:
+          path: assets/web/{path}
+          method: get
+      - http:
+          path: assets/web/css/{path}
+          method: get
