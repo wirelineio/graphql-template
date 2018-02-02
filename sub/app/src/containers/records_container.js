@@ -1,9 +1,12 @@
+//
+// Copyright 2018 Wireline, Inc.
+//
 
-import { compose, graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import { compose, graphql } from 'react-apollo';
+
 import Records from '../components/records';
 
-// TODO(burdon): Factor out query.
 const queryRecords = gql`
   {
     records {

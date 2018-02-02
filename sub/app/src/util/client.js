@@ -2,18 +2,17 @@
 // Copyright 2018 Wireline, Inc.
 //
 
+import * as _ from 'lodash';
+import createHashHistory from 'history/createHashHistory';
 import { ApolloClient, createNetworkInterface } from 'apollo-client';
 import { graphql } from 'graphql';
 import { print } from 'graphql/language/printer';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
-import createHashHistory from 'history/createHashHistory';
-import * as _ from 'lodash';
 
 /**
  * Client App.
  */
-
 export class Client {
 
   /**

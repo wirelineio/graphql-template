@@ -4,13 +4,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import s from './records.css';
+
+import s from './records.less';
 
 /**
- * Home
+ * Records
 */
-
 class Records extends React.Component {
+  
   static propTypes = {
     records: PropTypes.arrayOf(
       PropTypes.shape({
@@ -19,33 +20,25 @@ class Records extends React.Component {
     ),
   }
 
-  constructor(){
-    super(...arguments);
-  }
-
   render() {
 
-    if (this.props.records){
+    let { records } = this.props;
+    let recordItems = [];
+    
+    if (records) 
+      recordItems = records.map((record) => (
+        record.title
+      ));
 
-      // found records
-      return (
-        <div className={s.root}>
-        	{
-            this.props.records.map( (record, index) => {
-              return(<div key={index}>{record.title}</div>)
-            })
-          }
-        </div>
-      );
-    } else {
-
-      // no records supplied to properties
-      return (
-        <div>
-          no records
-        </div>
-      )
-    }
+    return (
+      <div>
+        { recordItems.length &&
+           <div>{ recordItems }</div>
+          ||
+          "Empty"
+        }
+      </div>
+    );
   }
 }
 

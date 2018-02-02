@@ -1,9 +1,9 @@
 {
-  "name": "@fullstarmodular/web",
+  "name": "@wirelineio/graphql-web",
   "version": "0.0.1",
-  "description": "FSM App website.",
+  "description": "Wireline GraphQL Website.",
   "license": "UNLICENSED",
-  "repository": "https://github.com/fullstackmodular/experimental",
+  "repository": "https://github.com/wirelineio/graphql-template",
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",

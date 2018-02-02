@@ -3,6 +3,7 @@
 //
 
 import { graphql } from 'graphql';
+
 import { createSchema } from './src/resolvers';
 
 // TODO(burdon): From ENV.
@@ -11,11 +12,9 @@ const version = '0.0.1';
 const schema = createSchema();
 
 /**
- * Registry GraphQL API.
+ * GraphQL API.
  */
-
-// TODO(zuspan): convert to async with response
-export async function graphQL(event, context, callback){
+export function graphQL(event, context, callback) {
   let { body } = event;
   let { query, variables } = JSON.parse(body);
 

@@ -1,5 +1,5 @@
 #
-# Copyright 2018 FSM, Inc.
+# Copyright 2018 Wireline, Inc.
 #
 
 #
@@ -13,7 +13,7 @@
 # unzip -vl .serverless/web.zip
 #
 
-service: wli-graphql-web
+service: wireline-graphql-web
 
 
 provider:
@@ -61,7 +61,7 @@ custom:
   client:
     # sls client deploy
     # https://s3.amazonaws.com/wireline-console-web-assets
-    bucketName: wli-graphql-web-assets
+    bucketName: wireline-graphql-web-assets
 
 
 functions:

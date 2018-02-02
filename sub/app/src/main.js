@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Redirect, Route, Switch } from 'react-router-dom';
+
 import { AppContainer } from './util/container';
 import { Client } from './util/client';
 import RecordsContainer from './containers/records_container';
@@ -13,7 +14,6 @@ import RecordsContainer from './containers/records_container';
 /**
  * Apollo client.
  */
-
 class AppClient extends Client {
 
   /** Get app reducer. */
@@ -43,7 +43,7 @@ class AppRoutes extends React.Component {
 
       return (
         <div>
-          <RecordsContainer />
+          <RecordsContainer/>
         </div>
       );
     };

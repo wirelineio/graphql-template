@@ -2,8 +2,9 @@
 // Copyright 2018 Wireline, Inc.
 //
 
-import { concatenateTypeDefs, makeExecutableSchema } from 'graphql-tools';
 import * as _ from 'lodash';
+import { concatenateTypeDefs, makeExecutableSchema } from 'graphql-tools';
+
 import RegistrySchema from '../gql/data.graphql';
 
 /**
@@ -41,7 +42,7 @@ export class Resolvers {
 
         // sample serverless-offline call: http://localhost:9000/data?query={allRecords{title}}
         records: async (obj, args, context) => {
-          return [{title: 'Hello World (1)'},{title: 'Hello World (2)'}];
+          return [{ title: 'Hello World (1)' },{ title: 'Hello World (2)' }];
         }
       },
 
@@ -49,8 +50,6 @@ export class Resolvers {
         
         // sample serverless-offline call: http://localhost:9000/data?query=mutation{insertRecords(records:[{title:%22this%22}]){title}}
         insertRecords: async (obj, args, context) => {
-          console.log('hi from mutation');
-          console.log(args);
           return args.records;
         }
       }

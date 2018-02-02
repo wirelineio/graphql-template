@@ -10,7 +10,7 @@
 # https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions?display=list
 #
 
-service: wli-graphql-app
+service: wireline-graphql-app
 
 
 provider:
@@ -38,4 +38,4 @@ custom:
   client:
     # sls client deploy
     # https://s3.amazonaws.com/wireline-app-assets
-    bucketName: wli-graphql-app-assets
+    bucketName: wireline-graphql-app-assets

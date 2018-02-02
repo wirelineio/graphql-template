@@ -1,5 +1,5 @@
 //
-// Copyright 2018 FSM, Inc.
+// Copyright 2018 Wireline, Inc.
 //
 
 const fs = require('fs');

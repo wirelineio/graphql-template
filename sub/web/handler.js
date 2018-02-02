@@ -1,5 +1,5 @@
 //
-// Copyright 2018 FSM, Inc.
+// Copyright 2018 Wireline, Inc.
 //
 
 import awsServerlessExpress from 'aws-serverless-express';
